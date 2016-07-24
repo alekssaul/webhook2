@@ -10,6 +10,8 @@ echo `date` -  Recieved arguments $1 $2
 imagehook=$2
 imagehook=${imagehook#[}
 imagehook=${imagehook%]}
+productionreplica=4
+canaryreplica=1
 
 
 if [[ ! $(echo $1 | grep aleks_saul/hello_world) ]]; then 
@@ -22,6 +24,7 @@ function DeployProd {
 	cp $APPDIR/manifest-helloworld-deployment.yaml manifest-helloworld-$imagehook-deployment.yaml 
 	sed -i 's@\[tag\]@'$imagehook'@g' manifest-helloworld-$imagehook-deployment.yaml 
 	sed -i 's@\[stage\]@'production'@g' manifest-helloworld-$imagehook-deployment.yaml
+	sed -i 's@\[replicas\]@'productionreplica'@g' manifest-helloworld-$imagehook-deployment.yaml
 
 	if [[ ! $(kubectl --namespace\=$ApplicationNamespace get deployment | grep production) ]] ; then
 		echo `date` - Didn\'t find Production Deployment, creating the initial one ... 
@@ -45,6 +48,7 @@ function DeployCanary {
 	cp $APPDIR/manifest-helloworld-deployment.yaml manifest-helloworld-$imagehook-deployment.yaml 
 	sed -i 's@\[tag\]@'$imagehook'@g' manifest-helloworld-$imagehook-deployment.yaml 
 	sed -i 's@\[stage\]@'canary'@g' manifest-helloworld-$imagehook-deployment.yaml
+	sed -i 's@\[replicas\]@'canaryreplica'@g' manifest-helloworld-$imagehook-deployment.yaml
 
 	if [[ ! $(kubectl --namespace\=$ApplicationNamespace get deployment | grep canary) ]] ; then
 		echo `date` - Didn\'t find Canary Deployment, creating the initial one ... 
