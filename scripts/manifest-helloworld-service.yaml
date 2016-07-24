@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  selector:
+    app: helloworld
+    stage: production
+  type: LoadBalancer
+  ports:
+  - name: helloworld
+    port: 80
+    targetPort : 80

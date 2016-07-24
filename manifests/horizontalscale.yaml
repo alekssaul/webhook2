@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: helloworld
+  namespace: hello-world
+spec:
+  scaleRef:
+    kind: ReplicationController
+    name: helloworld-production-10
+    subresource: scale
+  minReplicas: 4
+  maxReplicas: 8
+  cpuUtilization:
+    targetPercentage: 50

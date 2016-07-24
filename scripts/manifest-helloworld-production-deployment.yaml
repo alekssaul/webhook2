@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: helloworld-[stage]
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: helloworld
+        stage: [stage]
+    spec:
+      containers:
+      - name: helloworld
+        image: quay.io/aleks_saul/hello_world:[tag]
+        resources:
+          requests:
+            cpu: 400m
