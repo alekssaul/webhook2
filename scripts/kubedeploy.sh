@@ -44,6 +44,7 @@ function DeployCanary {
 	echo `date` - Starting Canary Deployment $imagehook... 	
 	cp $APPDIR/manifest-helloworld-deployment.yaml manifest-helloworld-$imagehook-deployment.yaml 
 	sed -i 's@\[tag\]@'$imagehook'@g' manifest-helloworld-$imagehook-deployment.yaml 
+	sed -i 's@\[stage\]@'canary'@g' manifest-helloworld-$imagehook-deployment.yaml
 
 	if [[ ! $(kubectl --namespace\=$ApplicationNamespace get deployment | grep canary) ]] ; then
 		echo `date` - Didn\'t find Canary Deployment, creating the initial one ... 
