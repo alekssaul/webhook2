@@ -17,3 +17,10 @@ This repo contains Webhook code based on Adnanh's implementation. It is inteded 
 - Manifests: Manifests used for webhook (this) application on Kubernetes
 - Scripts: Bash scripts and manifests used for creating an application on Kubernetes
 - Scale-demo: Files intended to be used for autoscaling demo, which is not currently implemented
+
+```
+kubectl create namespace webhook
+kubectl --namespace=webhook create -f manifests replicationcontroller.yaml
+kubectl --namespace=webhook create -f manifests service.yaml
+kubectl --namespace=webhook create configmap kubeconfig --from-file="$HOME/.dockercfg"
+```
