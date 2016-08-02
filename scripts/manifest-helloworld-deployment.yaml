@@ -19,23 +19,31 @@ spec:
       - name: helloworld
         image: quay.io/aleks_saul/hello_world:[tag]
         env:
-        - name: HELLOWORLD_displayexternalip
-          valueFrom:
-            configMapKeyRef:
-              name: helloworld-config
-              key: displayexternalip
-        - name: HELLOWORLD_displaygeolocation
-          valueFrom:
-            configMapKeyRef:
-              name: helloworld-config
-              key: displaygeolocation
+        - name: HELLOWORLD_DISPLAYEXTERNALIP
+          value: "false"
+        - name: HELLOWORLD_DISPLAYGEOLOCATION
+          value: "false"
+        - name: HELLOWORLD_CRASHAPP
+          value: "false"
+        - name: HELLOWORLD_CRASHAPPCOUNT
+          value: "5" 
+        - name: HELLOWORLD_DEBUG
+          value: "true"
+        - name: HELLOWORLD_SIMULATEREADY
+          value: "false"
+        - name: HELLOWORLD_WAITBEFOREREADY
+          value: "30" 
         resources:
           requests:
-            cpu: 400m
-        livenessProbe:
+            cpu: "200m"
+            memory: "64Mi"
+        readinessProbe:
+          failureThreshold: 10
           httpGet:
-            # Path to probe; should be cheap, but representative of typical behavior
-            path: /index.html
+            path: /readiness
             port: 80
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
+            scheme: HTTP
+          initialDelaySeconds: 3
+          periodSeconds: 5
+          successThreshold: 1
+          
