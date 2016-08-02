@@ -4,6 +4,11 @@ metadata:
   name: helloworld-[stage]
 spec:
   replicas: [replicas]
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -13,6 +18,24 @@ spec:
       containers:
       - name: helloworld
         image: quay.io/aleks_saul/hello_world:[tag]
+        env:
+        - name: HELLOWORLD_displayexternalip
+          valueFrom:
+            configMapKeyRef:
+              name: helloworld-config
+              key: displayexternalip
+        - name: HELLOWORLD_displaygeolocation
+          valueFrom:
+            configMapKeyRef:
+              name: helloworld-config
+              key: displaygeolocation
         resources:
           requests:
             cpu: 400m
+        livenessProbe:
+          httpGet:
+            # Path to probe; should be cheap, but representative of typical behavior
+            path: /index.html
+            port: 80
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
