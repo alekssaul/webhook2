@@ -22,8 +22,8 @@ This repo contains Webhook code based on Adnanh's implementation. It is inteded 
 
 ```
 kubectl create namespace webhook
-kubectl --namespace=webhook create -f manifests replicationcontroller.yaml
-kubectl --namespace=webhook create -f manifests service.yaml
+kubectl --namespace=webhook create -f manifests/replicationcontroller.yaml
+kubectl --namespace=webhook create -f manifests/service.yaml
 kubectl --namespace=webhook create configmap kubeconfig --from-file="$HOME/.dockercfg"
 ```
 
