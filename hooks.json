@@ -1,6 +1,6 @@
 [
   {
-    "id": "kubedeploy",
+    "id": "quay",
     "execute-command": "/webhook/scripts/push/kubedeploy.sh",
     "command-working-directory": "/webhook/scripts/push/",
     "response-message": "I got the payload!\n",
@@ -16,4 +16,5 @@
       }
     ]
   }
+  
 ]
