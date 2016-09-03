@@ -4,8 +4,10 @@ RUN			apk update && apk upgrade && \
 			curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.6/bin/linux/amd64/kubectl && \
 			mv kubectl /usr/local/bin/kubectl && \
 			chmod +x /usr/local/bin/kubectl 
-COPY 		hooks.json.example /etc/webhook/hooks.json
-COPY 		scripts	/var/scripts
-RUN			chmod +x /var/scripts/kubedeploy.sh
+COPY 		hooks.json /etc/webhook/hooks.json
+RUN			mkdir -p /webhook && \
+			mkdir /webhook/scripts
+COPY 		scripts	/webhook/scripts
+RUN			chmod +x /webhook/scripts/push/kubedeploy.sh
 
 ENTRYPOINT ["/usr/local/bin/webhook", "-verbose", "-hooks=/etc/webhook/hooks.json", "-hotreload"]
