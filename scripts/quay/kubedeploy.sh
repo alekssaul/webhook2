@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 export logfile=/var/log/webhook.log
-export KUBECONFIG=/usr/local/share/kubeconfig/config
 export ApplicationNamespace=hello-world
 export APPDIR=${PWD}
 

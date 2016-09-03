@@ -3,7 +3,7 @@
     "id": "quay",
     "execute-command": "/webhook/scripts/push/kubedeploy.sh",
     "command-working-directory": "/webhook/scripts/push/",
-    "response-message": "I got the payload!\n",
+    "response-message": "Quay Webhook recieved!\n",
     "pass-arguments-to-command":
     [
       {
@@ -16,5 +16,17 @@
       }
     ]
   }
-  
+  {
+    "id": "github",
+    "execute-command": "/webhook/scripts/github/github.sh",
+    "command-working-directory": "/webhook/scripts/github/",
+    "response-message": "Github PR recieved!\n",
+    "pass-environment-to-command":
+    [
+      {
+        "source": "entire-payload",
+        "envname": "PAYLOAD"
+      }
+    ]
+  }
 ]
