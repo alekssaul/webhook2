@@ -8,7 +8,5 @@ COPY 		hooks.json /etc/webhook/hooks.json
 RUN			mkdir -p /webhook && \
 			mkdir /webhook/scripts
 COPY 		scripts	/webhook/scripts
-RUN			chmod +x /webhook/scripts/quay/kubedeploy.sh && \
-			chmod +x /webhook/scripts/github/github.sh
 
 ENTRYPOINT ["/usr/local/bin/webhook", "-verbose", "-hooks=/etc/webhook/hooks.json", "-hotreload"]
