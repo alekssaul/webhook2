@@ -31,7 +31,7 @@
   },
   {
     "id": "github",
-    "execute-command": "/webhook/scripts/github/pullrequest.sh",
+    "execute-command": "/webhook/scripts/github/generic.sh",
     "command-working-directory": "/webhook/scripts/github/",
     "response-message": "Github PR recieved!\n",
     "pass-environment-to-command":
@@ -39,6 +39,10 @@
       {
         "source": "entire-payload",
         "envname": "PAYLOAD"
+      },
+      {
+        "source": "entire-headers",
+        "envname": "HEADER"
       }
     ]
   }

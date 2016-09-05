@@ -11,3 +11,5 @@ echo `date` - Executing $0
 
 PRnumber=$(echo $HOOK_PAYLOAD | jq '.number')
 PRref=$(echo $HOOK_PAYLOAD | jq '.pull_request.head.ref')
+
+echo `date` - Done executing $0

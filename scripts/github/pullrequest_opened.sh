@@ -6,8 +6,11 @@ set -e
 # Init Variables
 logfile=${logfile:-/var/log/webhook.log}
 confdir=${confdir:-/webhook/conf}
+statusdir=${statusdir:-/webhook/status}
 
 exec &> >(tee -a "$logfile")
+
+echo `date` - Executing $0 
 
 # check pre-reqs
 if [ ! -f $confdir/githubtoquay.json ] ; then
@@ -26,6 +29,17 @@ Quay_Repo=$(cat $confdir/githubtoquay.json | jq '.githubrepos.'\"$PR_RepoHTML\"'
 Quay_BuilderAPI=$(echo $Quay_Repo | sed -e 's/https:\/\/quay.io/https:\/\/quay.io\/api\/v1\/repository/g' | xargs -I {} echo {}/build/?since=$PR_AdjustedUnixTime)
 echo `date` - Checking Quay API: $Quay_BuilderAPI
 Quay_BuilderStatus=$(curl -s $Quay_BuilderAPI)
-echo `date` - Quay Status:
-echo $Quay_BuilderStatus | jq '.'
+Quay_BuildStatus=$(echo $Quay_BuilderStatus | jq '.builds[].phase' | tr -d '"' )
+PR_Repo=$(jq '.pull_request.base.repo.full_name' | tr -d '"' )
+echo `date` - Quay Status: $Quay_BuildStatus
 
+case $Quay_BuildStatus in
+	"build-scheduled")
+		mkdir -p $statusdir/$PR_ref
+		echo $HOOK_PAYLOAD > $statusdir/$PR_Repo/$PR_ref/github_pr_open.json
+		;;
+	*)
+		echo `date` - Quay Builder in unknown state ;;
+esac
+
+echo `date` - Done executing $0
