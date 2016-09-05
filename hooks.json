@@ -1,9 +1,22 @@
 [
   {
     "id": "quay",
-    "execute-command": "/webhook/scripts/push/kubedeploy.sh",
-    "command-working-directory": "/webhook/scripts/push/",
-    "response-message": "Quay Webhook recieved!\n",
+    "execute-command": "/webhook/scripts/quay/generic.sh",
+    "command-working-directory": "/webhook/scripts/quay/",
+    "response-message": "Quay Push event recieved!\n",
+    "pass-environment-to-command":
+    [
+      {
+        "source": "entire-payload",
+        "envname": "PAYLOAD"
+      }
+    ]
+  },
+  {
+    "id": "webhook",
+    "execute-command": "/webhook/scripts/quay/push.sh",
+    "command-working-directory": "/webhook/scripts/quay/",
+    "response-message": "Quay Push event recieved!\n",
     "pass-arguments-to-command":
     [
       {
@@ -15,10 +28,10 @@
         "name": "updated_tags"
       }
     ]
-  }
+  },
   {
     "id": "github",
-    "execute-command": "/webhook/scripts/github/github.sh",
+    "execute-command": "/webhook/scripts/github/pullrequest.sh",
     "command-working-directory": "/webhook/scripts/github/",
     "response-message": "Github PR recieved!\n",
     "pass-environment-to-command":
