@@ -21,9 +21,11 @@ case $PRaction in
 		echo `date` - Executing pullrequest_opened.sh 
 		./pullrequest_opened.sh ;;
 	"\"edited\"")
-		echo `date` - PR edited not implemented yet ;;
+		echo `date` - Executing pullrequest_edited.sh  
+		./pullrequest_edited.sh ;;
 	"\"closed\"")
-		echo `date` - PR closed not implemented yet ;;
+		echo `date` - Executing pullrequest_closed.sh 
+		./pullrequest_closed.sh ;;
 	"\"reopened\"")
 		echo `date` - PR Reopened not implemented yet ;;
 	"\"synchronize\"")
