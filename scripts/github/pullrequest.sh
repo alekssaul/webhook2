@@ -19,13 +19,13 @@ PRaction=$(echo $HOOK_PAYLOAD | jq '.action')
 case $PRaction in
 	"\"opened\"")
 		echo `date` - Executing pullrequest_opened.sh 
-		./pullrequest_opened.sh ;;
+		${PWD}/pullrequest_opened.sh ;;
 	"\"edited\"")
 		echo `date` - Executing pullrequest_edited.sh  
-		./pullrequest_edited.sh ;;
+		${PWD}/pullrequest_edited.sh ;;
 	"\"closed\"")
 		echo `date` - Executing pullrequest_closed.sh 
-		./pullrequest_closed.sh ;;
+		${PWD}/pullrequest_closed.sh ;;
 	"\"reopened\"")
 		echo `date` - PR Reopened not implemented yet ;;
 	"\"synchronize\"")

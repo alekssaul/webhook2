@@ -4,6 +4,12 @@ set -e
 # Init Variables
 logfile=${logfile:-/var/log/webhook.log}
 
+exec &> >(tee -a "$logfile")
+echo `date` - Executing $0 
+echo `date` - with HOOK_PAYLOAD : >> $logfile
+echo ------------------ >> $logfile
+echo $HOOK_PAYLOAD >> $logfile
+echo ------------------ >> $logfile
 
 # Check Kubernetes cluster health
 function TestKubernetes {
