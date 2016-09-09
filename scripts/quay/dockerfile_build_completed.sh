@@ -88,7 +88,6 @@ fi
 
 echo $Github_POSTBody >> $logfile
 
-
 # Post a comment with info
 curl -s -u $Github_BOTUSER:$Github_BOTPassword -H "Content-Type: application/json" -X POST -d '{"body": "'"$Github_POSTBody"'""}' $Github_CommentsURL
 
