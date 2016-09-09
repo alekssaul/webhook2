@@ -24,6 +24,7 @@ fi
 
 PR_number=$(echo $HOOK_PAYLOAD | jq '.number' | tr -d '"')
 PR_ref=$(echo $HOOK_PAYLOAD | jq '.pull_request.head.ref' | tr -d '"' )
+mkdir -p $statusdir/$PR_ref  2> /dev/stdout 1> /dev/null
 echo $HOOK_PAYLOAD > $statusdir/$PR_ref/github_pr_closed.json
 
 # Test Github credentials

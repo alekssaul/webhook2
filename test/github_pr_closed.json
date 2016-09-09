@@ -1,14 +1,14 @@
 {
   "action": "closed",
-  "number": 32,
+  "number": 34,
   "pull_request": {
-    "url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32",
-    "id": 84593008,
-    "html_url": "https://github.com/alekssaul/simplewebapp/pull/32",
-    "diff_url": "https://github.com/alekssaul/simplewebapp/pull/32.diff",
-    "patch_url": "https://github.com/alekssaul/simplewebapp/pull/32.patch",
-    "issue_url": "https://api.github.com/repos/alekssaul/simplewebapp/issues/32",
-    "number": 32,
+    "url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34",
+    "id": 84649604,
+    "html_url": "https://github.com/alekssaul/simplewebapp/pull/34",
+    "diff_url": "https://github.com/alekssaul/simplewebapp/pull/34.diff",
+    "patch_url": "https://github.com/alekssaul/simplewebapp/pull/34.patch",
+    "issue_url": "https://api.github.com/repos/alekssaul/simplewebapp/issues/34",
+    "number": 34,
     "state": "closed",
     "locked": false,
     "title": "Patch1",
@@ -32,25 +32,25 @@
       "site_admin": false
     },
     "body": "",
-    "created_at": "2016-09-09T04:42:26Z",
-    "updated_at": "2016-09-09T04:47:07Z",
-    "closed_at": "2016-09-09T04:47:07Z",
-    "merged_at": null,
-    "merge_commit_sha": "e477d84755dd86646384f5afeb9198bc6f7db30d",
+    "created_at": "2016-09-09T13:22:22Z",
+    "updated_at": "2016-09-09T13:25:29Z",
+    "closed_at": "2016-09-09T13:25:28Z",
+    "merged_at": "2016-09-09T13:25:28Z",
+    "merge_commit_sha": "ca6d34fe041bc7b3429ea74ac456f9d14377ce58",
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "commits_url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32/commits",
-    "review_comments_url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32/comments",
+    "commits_url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34/commits",
+    "review_comments_url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34/comments",
     "review_comment_url": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/comments{/number}",
-    "comments_url": "https://api.github.com/repos/alekssaul/simplewebapp/issues/32/comments",
-    "statuses_url": "https://api.github.com/repos/alekssaul/simplewebapp/statuses/a36f74aea59fae0901c03623d634151731e9067c",
+    "comments_url": "https://api.github.com/repos/alekssaul/simplewebapp/issues/34/comments",
+    "statuses_url": "https://api.github.com/repos/alekssaul/simplewebapp/statuses/e005dfd844629771389aa4bee607000c32b914fc",
     "head": {
       "label": "alekssaul:patch1",
       "ref": "patch1",
-      "sha": "a36f74aea59fae0901c03623d634151731e9067c",
+      "sha": "e005dfd844629771389aa4bee607000c32b914fc",
       "user": {
         "login": "alekssaul",
         "id": 11538902,
@@ -136,13 +136,13 @@
         "deployments_url": "https://api.github.com/repos/alekssaul/simplewebapp/deployments",
         "created_at": "2016-09-04T18:46:09Z",
         "updated_at": "2016-09-04T18:52:34Z",
-        "pushed_at": "2016-09-09T04:42:26Z",
+        "pushed_at": "2016-09-09T13:25:29Z",
         "git_url": "git://github.com/alekssaul/simplewebapp.git",
         "ssh_url": "git@github.com:alekssaul/simplewebapp.git",
         "clone_url": "https://github.com/alekssaul/simplewebapp.git",
         "svn_url": "https://github.com/alekssaul/simplewebapp",
         "homepage": null,
-        "size": 37,
+        "size": 44,
         "stargazers_count": 0,
         "watchers_count": 0,
         "language": "HTML",
@@ -248,13 +248,13 @@
         "deployments_url": "https://api.github.com/repos/alekssaul/simplewebapp/deployments",
         "created_at": "2016-09-04T18:46:09Z",
         "updated_at": "2016-09-04T18:52:34Z",
-        "pushed_at": "2016-09-09T04:42:26Z",
+        "pushed_at": "2016-09-09T13:25:29Z",
         "git_url": "git://github.com/alekssaul/simplewebapp.git",
         "ssh_url": "git@github.com:alekssaul/simplewebapp.git",
         "clone_url": "https://github.com/alekssaul/simplewebapp.git",
         "svn_url": "https://github.com/alekssaul/simplewebapp",
         "homepage": null,
-        "size": 37,
+        "size": 44,
         "stargazers_count": 0,
         "watchers_count": 0,
         "language": "HTML",
@@ -273,39 +273,57 @@
     },
     "_links": {
       "self": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34"
       },
       "html": {
-        "href": "https://github.com/alekssaul/simplewebapp/pull/32"
+        "href": "https://github.com/alekssaul/simplewebapp/pull/34"
       },
       "issue": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/issues/32"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/issues/34"
       },
       "comments": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/issues/32/comments"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/issues/34/comments"
       },
       "review_comments": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32/comments"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34/comments"
       },
       "review_comment": {
         "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/comments{/number}"
       },
       "commits": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/32/commits"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/pulls/34/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/alekssaul/simplewebapp/statuses/a36f74aea59fae0901c03623d634151731e9067c"
+        "href": "https://api.github.com/repos/alekssaul/simplewebapp/statuses/e005dfd844629771389aa4bee607000c32b914fc"
       }
     },
-    "merged": false,
-    "mergeable": true,
-    "mergeable_state": "clean",
-    "merged_by": null,
-    "comments": 1,
+    "merged": true,
+    "mergeable": null,
+    "mergeable_state": "unknown",
+    "merged_by": {
+      "login": "alekssaul",
+      "id": 11538902,
+      "avatar_url": "https://avatars.githubusercontent.com/u/11538902?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/alekssaul",
+      "html_url": "https://github.com/alekssaul",
+      "followers_url": "https://api.github.com/users/alekssaul/followers",
+      "following_url": "https://api.github.com/users/alekssaul/following{/other_user}",
+      "gists_url": "https://api.github.com/users/alekssaul/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/alekssaul/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/alekssaul/subscriptions",
+      "organizations_url": "https://api.github.com/users/alekssaul/orgs",
+      "repos_url": "https://api.github.com/users/alekssaul/repos",
+      "events_url": "https://api.github.com/users/alekssaul/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/alekssaul/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "comments": 0,
     "review_comments": 0,
-    "commits": 13,
-    "additions": 2,
-    "deletions": 2,
+    "commits": 16,
+    "additions": 3,
+    "deletions": 3,
     "changed_files": 1
   },
   "repository": {
@@ -374,13 +392,13 @@
     "deployments_url": "https://api.github.com/repos/alekssaul/simplewebapp/deployments",
     "created_at": "2016-09-04T18:46:09Z",
     "updated_at": "2016-09-04T18:52:34Z",
-    "pushed_at": "2016-09-09T04:42:26Z",
+    "pushed_at": "2016-09-09T13:25:29Z",
     "git_url": "git://github.com/alekssaul/simplewebapp.git",
     "ssh_url": "git@github.com:alekssaul/simplewebapp.git",
     "clone_url": "https://github.com/alekssaul/simplewebapp.git",
     "svn_url": "https://github.com/alekssaul/simplewebapp",
     "homepage": null,
-    "size": 37,
+    "size": 44,
     "stargazers_count": 0,
     "watchers_count": 0,
     "language": "HTML",

@@ -20,7 +20,7 @@ case $PRaction in
 	"\"opened\"")
 		${PWD}/pullrequest_opened.sh ;;
 	"\"edited\"")		
-		${PWD}/pullrequest_edited.sh ;;
+		echo `date` - PR edited not implemented yet ;;
 	"\"closed\"")		
 		${PWD}/pullrequest_closed.sh ;;
 	"\"reopened\"")
