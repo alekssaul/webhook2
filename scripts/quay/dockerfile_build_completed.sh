@@ -56,6 +56,7 @@ Quay_Name=$(echo $HOOK_PAYLOAD | jq '.name' | tr -d '"' )
 kubectl run --namespace=$KUBERNETES_NAMESPACE \
 	$Quay_Name-$Quay_buildname \
 	--image=$Quay_DockerURL:$Quay_DockerTAG \
+	--image-pull-policy=Always \
 	--labels="App=$Quay_Name,GithubCommit=$Github_Commit" 
 
 kubectl expose --namespace=$KUBERNETES_NAMESPACE \
