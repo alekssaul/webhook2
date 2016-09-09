@@ -1,0 +1,9 @@
+{
+	"https://github.com/alekssaul/simplewebapp":{
+		"QUAY_REPO" : "https://quay.io/aleks_saul/simplewebapp",
+		"KUBERNETES_MANIFEST" : "simplewebapp_deployment.yaml",
+		"KUBERNETES_NAMESPACE" : "simplewebapp-dev",
+		"APP_PORT" : "80",
+		"KUBERNETES_ServiceType" : "LoadBalancer"
+	}
+}

@@ -5,11 +5,33 @@ set -e
 
 # Init Variables
 logfile=${logfile:-/var/log/webhook.log}
+confdir=${confdir:-/webhook/conf}
+statusdir=${statusdir:-/webhook/status}
 
 exec &> >(tee -a "$logfile")
+
+if [ -f $confdir/secrets.sh ] ; then
+	$confdir/secrets.sh
+fi
+
 echo `date` - Executing $0 
 
-PRnumber=$(echo $HOOK_PAYLOAD | jq '.number')
-PRref=$(echo $HOOK_PAYLOAD | jq '.pull_request.head.ref')
+# check pre-reqs
+if [ ! -f $confdir/config.json ] ; then
+	echo `date` - ERROR: $confdir/config.json does not exist!
+	exit 1;
+fi
 
-echo `date` - Done executing $0
+PR_number=$(echo $HOOK_PAYLOAD | jq '.number' | tr -d '"')
+PR_ref=$(echo $HOOK_PAYLOAD | jq '.pull_request.head.ref' | tr -d '"' )
+echo $HOOK_PAYLOAD > $statusdir/$PR_ref/github_pr_closed.json
+
+# Test Github credentials
+Github_attemptlogin=$(curl -s -u $Github_BOTUSER:$Github_BOTPassword https://api.github.com | jq '.message' | tr -d '"' )
+if [ "$Github_attemptlogin" == "Bad credentials" ]; then
+	echo `date` - ERROR: Could not authenticate to github
+	exit 1;
+fi
+
+
+

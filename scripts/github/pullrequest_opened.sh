@@ -13,8 +13,8 @@ exec &> >(tee -a "$logfile")
 echo `date` - Executing $0 
 
 # check pre-reqs
-if [ ! -f $confdir/githubtoquay.json ] ; then
-	echo `date` - ERROR: $confdir/githubtoquay.json does not exist!
+if [ ! -f $confdir/config.json ] ; then
+	echo `date` - ERROR: $confdir/config.json does not exist!
 	exit 1;
 fi
 
@@ -25,7 +25,7 @@ PR_CreatedUnixTime=$(date --date=$PR_CreatedTime +"%s")
 # adjust for time delay between webhook starts between self and Quay.io
 PR_AdjustedUnixTime=$(expr $PR_CreatedUnixTime - 30)
 PR_RepoHTML=$(echo $HOOK_PAYLOAD | jq '.pull_request.base.repo.html_url' | tr -d '"')
-Quay_Repo=$(cat $confdir/githubtoquay.json | jq '.githubrepos.'\"$PR_RepoHTML\"'' | tr -d '"')
+Quay_Repo=$(cat $confdir/config.json | jq '.'\"$PR_RepoHTML\"'.QUAY_REPO' | tr -d '"')
 Quay_BuilderAPI=$(echo $Quay_Repo | sed -e 's/https:\/\/quay.io/https:\/\/quay.io\/api\/v1\/repository/g' | xargs -I {} echo {}/build/?since=$PR_AdjustedUnixTime)
 echo `date` - Checking Quay API: $Quay_BuilderAPI
 Quay_BuilderStatus=$(curl -s $Quay_BuilderAPI)
@@ -36,7 +36,7 @@ echo `date` - Quay Status: $Quay_BuildStatus
 case $Quay_BuildStatus in
 	"build-scheduled")
 		mkdir -p $statusdir/$PR_ref
-		echo $HOOK_PAYLOAD > $statusdir/$PR_Repo/$PR_ref/github_pr_open.json
+		echo $HOOK_PAYLOAD > $statusdir/$PR_ref/github_pr_open.json
 		;;
 	*)
 		echo `date` - Quay Builder in unknown state ;;

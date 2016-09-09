@@ -14,8 +14,8 @@
   },
   {
     "id": "webhook",
-    "execute-command": "/webhook/scripts/quay/push.sh",
-    "command-working-directory": "/webhook/scripts/quay/",
+    "execute-command": "/webhook/scripts/webhook/push.sh",
+    "command-working-directory": "/webhook/scripts/webhook/",
     "response-message": "Quay Push event recieved!\n",
     "pass-arguments-to-command":
     [
