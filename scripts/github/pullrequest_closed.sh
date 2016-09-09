@@ -25,12 +25,13 @@ fi
 # Get State
 PR_number=$(echo $HOOK_PAYLOAD | jq '.number' | tr -d '"')
 PR_ref=$(echo $HOOK_PAYLOAD | jq '.pull_request.head.ref' | tr -d '"' )
-Github_CommentsURL=$(cat $statusdir/$Github_Branch/github_pr_open.json | jq '.pull_request.comments_url' | tr -d '"')
+Github_CommentsURL=$(cat $statusdir/$PR_ref/github_pr_open.json | jq '.pull_request.comments_url' | tr -d '"')
+PR_RepoHTML=$(echo $HOOK_PAYLOAD | jq '.pull_request.base.repo.html_url' | tr -d '"')
 KUBERNETES_NAMESPACE=$(cat $confdir/config.json | jq '.'\"$PR_RepoHTML\"'.KUBERNETES_NAMESPACE' | tr -d '"')
 Quay_Name=$(echo $HOOK_PAYLOAD | jq '.name' | tr -d '"' )
 
 
-mkdir -p $statusdir/$PR_ref  2> /dev/stdout 1> /dev/null
+mkdir -p $statusdir/$PR_ref 2> /dev/stdout 1> /dev/null
 echo $HOOK_PAYLOAD > $statusdir/$PR_ref/github_pr_closed.json
 
 # Test Github credentials
@@ -46,13 +47,14 @@ Quay_files=$(ls quay_build_completed_*.json)
 for build in $Quay_files; do 
 	buildid=$(echo $build | sed -e 's/quay_build_completed_//g' | sed -e 's/.json//g' )
 	Quay_Name=$(cat $build | jq '.name' | tr -d '"' )
-	echo `date` - Removing $buildid from Kubernetes 
+	echo `date` - Removing $buildid from $KUBERNETES_NAMESPACE
 	kubectl --namespace=$KUBERNETES_NAMESPACE delete \
 		service $Quay_Name-$buildid 
 	kubectl --namespace=$KUBERNETES_NAMESPACE delete \
 		deployment $Quay_Name-$buildid 
 done
 popd 
+
 
 # Let the User know
 Github_POSTBody="Looks like the Pull Request is closed, all Kubernetes objects associated to this PR has been removed"
