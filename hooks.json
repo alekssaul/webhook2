@@ -13,7 +13,7 @@
     ]
   },
   {
-    "id": "webhook",
+    "id": "kubedeploy",
     "execute-command": "/webhook/scripts/webhook/push.sh",
     "command-working-directory": "/webhook/scripts/webhook/",
     "response-message": "Quay Push event recieved!\n",
