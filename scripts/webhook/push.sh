@@ -69,7 +69,7 @@ function DeployFederation {
 
 function TestKubernetes {
 	echo `date` - Testing Kubernetes Connectivity ...  
-	if [[ $(kubectl get cs | grep ok) ]]; then
+	if [ ! ]; then
 		echo `date` - Kubernetes cluster seem to be health  
 		
 		if [[ $(kubectl get namespace | grep $ApplicationNamespace) ]] ; then
