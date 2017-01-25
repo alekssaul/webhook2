@@ -69,7 +69,7 @@ function DeployFederation {
 
 function TestKubernetes {
 	echo `date` - Testing Kubernetes Connectivity ...  
-	if [[ ! ]]; then
+	
 		echo `date` - Kubernetes cluster seem to be health  
 		
 		if [[ $(kubectl get namespace | grep $ApplicationNamespace) ]] ; then
@@ -84,10 +84,6 @@ function TestKubernetes {
 			kubectl --namespace=$ApplicationNamespace create -f $APPDIR/manifest-helloworld-service.yaml
 		fi
 
-	else 
-		echo `date` - Not a valid response from \"kubectl get cluster-health\" 
-		exit ;
-	fi
 }
 
 TestKubernetes
