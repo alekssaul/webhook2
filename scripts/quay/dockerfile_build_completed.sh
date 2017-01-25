@@ -75,14 +75,15 @@ if [ "$KUBERNETES_ServiceType" == "LoadBalancer" ] ; then
 	while [ "$ExternalIPReady" == "{}" ] && [ $counter -le 10 ]; do
 		counter=$(expr $counter + 1)
 		ExternalIPReady=$(kubectl --namespace=$KUBERNETES_NAMESPACE \
-		get service $Quay_Name-$Quay_buildname -o json | jq '.status.loadBalancer')
+		get service $Quay_Name-$Quay_buildname -o json | jq '.items[].status.loadBalancer)
 		sleep 20
 	done
 	
 	ExternalIPCheck=$(echo $ExternalIPReady | grep -c "ip")
 	if [ "$ExternalIPCheck" == "1" ]; then 
 		ExternalIP=$(kubectl --namespace=$KUBERNETES_NAMESPACE \
-		get service $Quay_Name-$Quay_buildname -o json | jq '.status.loadBalancer.ingress[].ip' | tr -d '"'  )
+		get service $Quay_Name-$Quay_buildname -o json | jq '.items[].status.loadBalancer.i
+ngress[].hostname' | tr -d '"'  )
 		Github_POSTBody="$Github_POSTBody . Your application is available at $ExternalIP:$APP_PORT or http://$ExternalIP:$APP_PORT"
 	fi
 fi
