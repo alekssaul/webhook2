@@ -1,0 +1,38 @@
+{
+  "builds": [
+    {
+      "status": {},
+      "repository": {
+        "namespace": "aleks_saul",
+        "name": "simplewebapp"
+      },
+      "tags": [
+        "alekssaul-patch-1"
+      ],
+      "started": "Sun, 04 Sep 2016 19:04:18 -0000",
+      "error": null,
+      "trigger_metadata": null,
+      "phase": "complete",
+      "manual_user": null,
+      "id": "b18cf92a-60dc-454e-89d0-eb332f4f3184",
+      "display_name": "b1b8b61",
+      "subdirectory": "",
+      "pull_robot": {
+        "kind": "user",
+        "name": null,
+        "is_robot": null
+      },
+      "trigger": {
+        "service": "github",
+        "config": {},
+        "is_active": true,
+        "repository_url": null,
+        "build_source": null,
+        "id": "aed762a8-f6f3-4980-99a6-c57ec68b2c5b",
+        "is_connected_user": false
+      },
+      "is_writer": false,
+      "resource_key": null
+    }
+  ]
+}

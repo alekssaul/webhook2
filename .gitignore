@@ -1,0 +1,4 @@
+.DS_Store
+conf/secrets.sh
+scripts/.DS_Store
+scripts/quay/.DS_Store

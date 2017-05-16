@@ -1,0 +1,49 @@
+[
+  {
+    "id": "quay",
+    "execute-command": "/webhook/scripts/quay/generic.sh",
+    "command-working-directory": "/webhook/scripts/quay/",
+    "response-message": "Quay Push event recieved!\n",
+    "pass-environment-to-command":
+    [
+      {
+        "source": "entire-payload",
+        "envname": "PAYLOAD"
+      }
+    ]
+  },
+  {
+    "id": "kubedeploy",
+    "execute-command": "/webhook/scripts/webhook/push.sh",
+    "command-working-directory": "/webhook/scripts/webhook/",
+    "response-message": "Quay Push event recieved!\n",
+    "pass-arguments-to-command":
+    [
+      {
+        "source": "payload",
+        "name": "repository"
+      },
+      {
+        "source": "payload",
+        "name": "updated_tags"
+      }
+    ]
+  },
+  {
+    "id": "github",
+    "execute-command": "/webhook/scripts/github/generic.sh",
+    "command-working-directory": "/webhook/scripts/github/",
+    "response-message": "Github PR recieved!\n",
+    "pass-environment-to-command":
+    [
+      {
+        "source": "entire-payload",
+        "envname": "PAYLOAD"
+      },
+      {
+        "source": "entire-headers",
+        "envname": "HEADER"
+      }
+    ]
+  }
+]
